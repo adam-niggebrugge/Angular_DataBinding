@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-server-element',
@@ -6,11 +6,24 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./server-element.component.css'],
   encapsulation: ViewEncapsulation.Emulated //default it emulated, can be overwritten with none or shadowdom. Shadowdom allows for it to combine to all elements globably, angular will NOT apply the 'extra' selectors to elements it creates
 })
-export class ServerElementComponent implements OnInit {
+export class ServerElementComponent implements OnInit, OnChanges {
   @Input("srvElement") element: {type: string, name: string, content: string};
-  constructor() { }
+  
+  constructor() {
+    console.log('constructor called');
+   }
+
+  /**
+   * Only hook that receives arguments
+   * This will always run first
+   */
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(`What is in the changes?? ${changes}`);
+    console.log('ngOnChanges');
+  }
 
   ngOnInit(): void {
+    console.log('ngOnInit called');
   }
 
 }
