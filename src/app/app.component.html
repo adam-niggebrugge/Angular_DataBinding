@@ -8,9 +8,11 @@
   <hr>
   <div class="row">
     <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="onFirstClick()"></button>
       <app-server-element 
         *ngFor="let se of serverElements"
-        [srvElement]="se">
+        [srvElement]="se"
+        [name]="se.name">
         <p>
           <strong *ngIf="se.type === 'server'" style="color: red">{{ se.content }}</strong>
           <em *ngIf="se.type === 'blueprint'">{{ se.content }}</em>

@@ -8,7 +8,8 @@ import { Component, OnInit, Input, ViewEncapsulation, OnChanges, SimpleChanges }
 })
 export class ServerElementComponent implements OnInit, OnChanges {
   @Input("srvElement") element: {type: string, name: string, content: string};
-  
+  @Input() name: string;
+
   constructor() {
     console.log('constructor called');
    }
@@ -18,7 +19,8 @@ export class ServerElementComponent implements OnInit, OnChanges {
    * This will always run first
    */
   ngOnChanges(changes: SimpleChanges) {
-    console.log(`What is in the changes?? ${changes}`);
+    console.log(`What is in the changes??`);
+    console.log(changes);
     console.log('ngOnChanges');
   }
 
